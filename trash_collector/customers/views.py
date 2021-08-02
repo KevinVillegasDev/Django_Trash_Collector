@@ -1,5 +1,5 @@
 # from trash_collector import customers
-
+from django.db.models.fields.related import ForeignKey
 from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
@@ -38,7 +38,7 @@ def create(request):
         suspend_start = request.POST.get('suspend_start')
         suspend_end = request.POST.get('suspend_end')
         new_customer = Customer(name = name, address = address, zipcode = zipcode, weekly_pickup_day = weekly_pickup_day, one_time_pickup = one_time_pickup, 
-                                balance = balance, suspend_start = suspend_start, suspend_end = suspend_end)
+                                balance = balance, suspend_start = suspend_start, suspend_end = suspend_end, user = user)
         new_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
