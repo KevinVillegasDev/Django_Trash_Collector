@@ -17,3 +17,6 @@ class Customer(models.Model):
     suspend_start = DateField(null=True)
     suspend_end = DateField(null=False)
     
+    def __str__(self):
+        return self.name
+    

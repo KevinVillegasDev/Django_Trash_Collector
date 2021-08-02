@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} New Customer Registration {% endblock %}
+
+{% block header %} New Customer Registration {% endblock %}
+
+{% block content %}
+<form action ="{% url 'customers:create' %}" method="post">
+    {% csrf_token %}
+    Name:<input type="text" name="name" id="name"><br>
+    Address:<input type="text" name="address" id="address"><br>
+    Zip Code:<input type="text" name="zipcode" id="zipcode"><br>
+    Weekly Pickup Day:<input type="datetime" name="weekly_pickup_day" id="weekly_pickup_day"><br>
+    One Time Pickup:<input type="datetime" name="one_time_pickup" id="one_time_pickup"><br>
+    Balance:<input type="int" name="balance" id="balance"><br>
+    Suspend Service Start Date:<input type="datetime" name="suspend_start" id="suspend_start"><br>
+    Suspend Service End Date:<input type="datetime" name="suspend_end" id="suspend_end"><br>
+    <input type="submit" value="Register!">
+</form>
+
+{% endblock %}
