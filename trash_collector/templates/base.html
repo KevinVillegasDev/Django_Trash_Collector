@@ -9,6 +9,13 @@
   {% for group in user.groups.all%}
     {% if group.name == "Customers" %}
     <p>Customer Navbar</p>
+    <div class="nav-wrapper">
+      <div class="nav-link-wrapper">
+        <a href="pickupday.html">Pickup Day</a>
+        <a href="account_info.html">Account Info</a>
+        <a href="suspend_acc.html">Suspend Account</a>
+      </div>
+    </div>
     {% elif group.name == "Employees" %}
     <p>Employee Navbar</p>
     {% endif %}
