@@ -33,14 +33,18 @@ def create(request):
         address = request.POST.get('address')
         zipcode = request.POST.get('zipcode')
         weekly_pickup_day = request.POST.get('weekly_pickup_day')
-        one_time_pickup = request.POST.get('one_time_pickup')
+        # one_time_pickup = request.POST.get('one_time_pickup')
         balance = request.POST.get('balance')
-        suspend_start = request.POST.get('suspend_start')
-        suspend_end = request.POST.get('suspend_end')
-        new_customer = Customer(name = name, address = address, zipcode = zipcode, weekly_pickup_day = weekly_pickup_day, one_time_pickup = one_time_pickup, 
-                                balance = balance, suspend_start = suspend_start, suspend_end = suspend_end, user = user)
+        # suspend_start = request.POST.get('suspend_start')
+        # suspend_end = request.POST.get('suspend_end')
+        new_customer = Customer(name = name, address = address, zipcode = zipcode, weekly_pickup_day = weekly_pickup_day, 
+                                balance = balance, user = user)
         new_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/create.html')
     
+def details(request):
+    user = request.user
+    user_from_db = Customer.objects.get(user=user)
+    return render(request, 'customers/details.html', {'customer': user_from_db})

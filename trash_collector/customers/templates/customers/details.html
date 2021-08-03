@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Update Page{% endblock %}
+
+{% block header %}Account Info{% endblock %}
+
+{% block content %}
+<form action="{% url 'customers:details' %}" method="post">
+    {% csrf_token %}
+    Name: {{customer.name}}<br>
+    Address: {{customer.address}}<br>
+    Zip Code: {{customer.zipcode}}<br>
+    Weekly Pickup Day: {{customer.weekly_pickup_day}}<br>
+    <!-- One Time Pickup: {{customer.one_time_pickup}}<br> -->
+    Balance: {{customer.balance}}<br>
+    <!-- Suspend Service Start Date: {{customer.suspend_start}}<br>
+    Suspend Service End Date: {{customer.suspend_end}}<br> -->
+</form>
+{% endblock %}
