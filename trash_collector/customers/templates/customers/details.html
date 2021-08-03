@@ -7,10 +7,14 @@
 {% block content %}
 <form action="{% url 'customers:details' %}" method="post">
     {% csrf_token %}
-    First Name:<input type="text" value='{{player.first_name}}' name="first_name" id="first_name"><br>
-    Last Name:<input type="text" value='{{player.last_name}}' name="last_name" id="last_name"><br>
-    Jeresy Number:<input type="text" value='{{player.jersey_number}}' name="jersey_number" id="jersey_number"><br>
-    Team:
+    Name:<input type="text" value="user.name" name="name" id="name"><br>
+    Address:<input type="text" value="user.address" name="address" id="address"><br>
+    Zip Code:<input type="text" value="user.zipcode" name="zipcode" id="zipcode"><br>
+    Weekly Pickup Day:<input type="datetime" value="user.weekly_pickup_day" name="weekly_pickup_day" id="weekly_pickup_day"><br>
+    One Time Pickup:<input type="datetime" value="user.one_time_pickup" name="one_time_pickup" id="one_time_pickup"><br>
+    Balance:<input type="int" name="balance" value="user.balance" id="balance"><br>
+    Suspend Service Start Date:<input type="datetime" value="user.suspend_start" name="suspend_start" id="suspend_start"><br>
+    Suspend Service End Date:<input type="datetime" value="user.suspend_end" name="suspend_end" id="suspend_end"><br>
     <input type="submit" value="Update!">
 </form>
 {% endblock %}

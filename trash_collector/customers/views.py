@@ -47,4 +47,4 @@ def create(request):
 def details(request):
     user = request.user
     user_from_db = Customer.objects.get(user=user)
-    return render(request, 'customers/details.html')
+    return render(request, 'customers/details.html', {'customer': user_from_db})
