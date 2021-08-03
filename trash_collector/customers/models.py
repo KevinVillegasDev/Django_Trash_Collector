@@ -15,7 +15,7 @@ class Customer(models.Model):
     one_time_pickup = models.DateField(null=True)
     balance = IntegerField(default=0)
     suspend_start = DateField(null=True)
-    suspend_end = DateField(null=False)
+    suspend_end = DateField(null=True)
     
     def __str__(self):
         return self.name
