@@ -2,19 +2,18 @@
 
 {% block title %}Update Page{% endblock %}
 
-{% block header %}Player Update{% endblock %}
+{% block header %}Account Info{% endblock %}
 
 {% block content %}
 <form action="{% url 'customers:details' %}" method="post">
     {% csrf_token %}
-    Name:<input type="text" value="user.name" name="name" id="name"><br>
-    Address:<input type="text" value="user.address" name="address" id="address"><br>
-    Zip Code:<input type="text" value="user.zipcode" name="zipcode" id="zipcode"><br>
-    Weekly Pickup Day:<input type="datetime" value="user.weekly_pickup_day" name="weekly_pickup_day" id="weekly_pickup_day"><br>
-    One Time Pickup:<input type="datetime" value="user.one_time_pickup" name="one_time_pickup" id="one_time_pickup"><br>
-    Balance:<input type="int" name="balance" value="user.balance" id="balance"><br>
-    Suspend Service Start Date:<input type="datetime" value="user.suspend_start" name="suspend_start" id="suspend_start"><br>
-    Suspend Service End Date:<input type="datetime" value="user.suspend_end" name="suspend_end" id="suspend_end"><br>
-    <input type="submit" value="Update!">
+    Name: {{customer.name}}<br>
+    Address: {{customer.address}}<br>
+    Zip Code: {{customer.zipcode}}<br>
+    Weekly Pickup Day: {{customer.weekly_pickup_day}}<br>
+    One Time Pickup: {{customer.one_time_pickup}}<br>
+    Balance: {{customer.balance}}<br>
+    Suspend Service Start Date: {{customer.suspend_start}}<br>
+    Suspend Service End Date: {{customer.suspend_end}}<br>
 </form>
 {% endblock %}
