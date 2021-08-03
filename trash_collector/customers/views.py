@@ -48,3 +48,14 @@ def details(request):
     user = request.user
     user_from_db = Customer.objects.get(user=user)
     return render(request, 'customers/details.html', {'customer': user_from_db})
+
+def pickupday(request):
+    user = request.user
+    context = {"user": user}
+    if request.method == "POST":
+        weekly_pickup_day = Customer.objects.get(user=user)
+        weekly_pickup_day.weekly_pickup_day = request.POST.get('weekly_pickup_day')
+        weekly_pickup_day.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+         return render(request, 'customers/pickupday.html', context)

@@ -8,5 +8,6 @@ app_name = "customers"
 urlpatterns = [
     path('', views.index, name="index"),
     path('create/', views.create, name="create"),
-    path('details/', views.details, name="details")
+    path('details/', views.details, name="details"),
+    path('pickupday/', views.pickupday, name='pickupday')
 ]
