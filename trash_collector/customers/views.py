@@ -71,3 +71,21 @@ def onetimepickup(request):
     else:
          return render(request, 'customers/onetimepickup.html', context)
     
+def balance(request):
+    user = request.user
+    context = {"user": user}
+    transaction_cost = 25.00
+    if request.method == "POST":
+        balance = Customer.objects.get(user = user)
+        user_input = int(input("How many pick ups have you had this month?")) 
+        if user_input > 0:
+            balance = transaction_cost * user_input
+            balance.save()
+            return HttpResponseRedirect(reverse('customers:index'))
+
+    else:        
+        return render(request, 'customers/balance.html', context)
+
+    
+
+
