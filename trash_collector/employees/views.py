@@ -26,3 +26,8 @@ def create(request):
     else: 
         return render(request, 'employees/create.html')
         
+
+def confirmpickup(request):
+    user = request.user
+    if request.method == "POST":
+        confirmed = request.POST.get("cofirmed")

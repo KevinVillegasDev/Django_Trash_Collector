@@ -8,7 +8,7 @@
 
 <form action="{% url 'employees:confirm_pickup' %}" method="post">
     {% csrf_token %} 
-    Confirm Pickup: 
+    Confirm Pickup: <input type="text" name="confirmed">
 </form>
 
 
