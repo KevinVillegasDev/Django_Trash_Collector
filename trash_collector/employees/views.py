@@ -1,6 +1,6 @@
 from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse
-from trash_collector.employees.models import Employee
+from .models import Employee
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.apps import apps

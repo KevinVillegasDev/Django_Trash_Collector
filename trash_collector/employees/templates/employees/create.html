@@ -9,7 +9,7 @@
 <form action="{% url 'employees:create' %}" method="post">
     {% csrf_token %}
     Name:<input type="text" name="name" id="name"><br>
-    Zip Code:<input type="text" zipcode="zipcode" id="zipcode"><br>
-    <input type="submit" value="register">
+    Zip Code:<input type="text" name="zipcode" id="zipcode"><br>
+    <input type="submit" value="Register">
 </form>
  {% endblock %}
