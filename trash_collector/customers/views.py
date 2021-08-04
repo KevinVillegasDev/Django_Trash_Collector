@@ -71,6 +71,25 @@ def onetimepickup(request):
     else:
          return render(request, 'customers/onetimepickup.html', context)
     
+
+    
+def suspend(request):
+    user = request.user
+    context = {"user": user}
+    if request.method == "POST":
+        suspend_start = Customer.objects.get(user=user)
+        suspend_end = Customer.objects.get(user=user)
+        suspend_start.suspend_start = request.POST.get('suspend_start')
+        suspend_start.save()
+        suspend_end.suspend_end = request.POST.get('suspend_end')
+        suspend_end.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+         return render(request, 'customers/suspend.html', context)
+
+
+
+
 # def balance(request):
 #     user = request.user
 #     context = {"user": user}
@@ -83,7 +102,3 @@ def onetimepickup(request):
 #         return HttpResponseRedirect(reverse('customers:index'))
 #     else:        
 #         return render(request, 'customers/balance.html', context)
-
-    
-
-

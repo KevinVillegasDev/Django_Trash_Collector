@@ -10,5 +10,6 @@ urlpatterns = [
     path('create/', views.create, name="create"),
     path('details/', views.details, name="details"),
     path('pickupday/', views.pickupday, name='pickupday'),
-    path('onetimepickup/', views.onetimepickup, name='onetimepickup')
+    path('onetimepickup/', views.onetimepickup, name='onetimepickup'),
+    path('suspend/', views.suspend, name='suspend')
 ]
