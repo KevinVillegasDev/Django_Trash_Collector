@@ -6,10 +6,10 @@
 {% block header %} Suspend your pickups {% endblock %}
 
 {% block content %}
-<form action ="{% url 'customers:suspend' %}" method="post"></form>
+<form action ="{% url 'customers:suspend' %}" method="post">
     {% csrf_token %}
-    Suspend start:<input type="datetime" name="suspend_start" id="suspend_start"><br>
-    <!-- Suspend end:<input type="datetime" name="suspend_end" id="suspend_end"><br> -->
+    Suspend start:<input type="date" name="suspend_start" id="suspend_start"><br>
+    Suspend end:<input type="datetime" name="suspend_end" id="suspend_end"><br>
     <input type="submit" value="Update!">
 </form>
 

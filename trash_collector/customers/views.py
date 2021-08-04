@@ -77,12 +77,11 @@ def suspend(request):
     user = request.user
     context = {"user": user}
     if request.method == "POST":
-        suspend_start = Customer.objects.get(user=user)
-        suspend_end = Customer.objects.get(user=user)
-        suspend_start.suspend_start = request.POST.get('suspend_start')
-        suspend_start.save()
-        suspend_end.suspend_end = request.POST.get('suspend_end')
-        suspend_end.save()
+        print(request.POST.get('suspend_start'))
+        customer_to_suspend = Customer.objects.get(user=user)
+        customer_to_suspend.suspend_start = request.POST.get('suspend_start')
+        customer_to_suspend.suspend_end = request.POST.get('suspend_end')
+        customer_to_suspend.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
          return render(request, 'customers/suspend.html', context)
