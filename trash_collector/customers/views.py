@@ -69,5 +69,5 @@ def onetimepickup(request):
         one_time_pickup.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
-         return render(request, 'customers/pickupday.html', context)
+         return render(request, 'customers/onetimepickup.html', context)
     
