@@ -10,7 +10,7 @@
 
 <form action ="{% url 'customers:onetimepickup' %}" method="post">
     {% csrf_token %}
-    One Time Pickup Date: <input type="datetime" name="one_time_pickup" id="one_time_pickup"><br>
+    One Time Pickup Date: <input type="date" name="one_time_pickup" id="one_time_pickup"><br>
     <input type="submit" value="Set date">
 </form>
 

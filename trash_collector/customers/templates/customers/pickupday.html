@@ -8,7 +8,7 @@
 {% block content %}
 <form action ="{% url 'customers:pickupday' %}" method="post">
     {% csrf_token %}
-    Weekly Pickup Day:<input type="datetime" name="weekly_pickup_day" id="weekly_pickup_day"><br>
+    Weekly Pickup Day:<input type="date" name="weekly_pickup_day" id="weekly_pickup_day"><br>
     <input type="submit" value="Update!">
 </form>
 <!-- <form action ="{% url 'customers:pickupday' %}" method="post">
