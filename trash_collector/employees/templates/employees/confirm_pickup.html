@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Confirm pickup and balance {% endblock %}
+
+{% block header %} Confirm Pickup and Balance {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'employees:confirm_pickup' %}" method="post">
+    {% csrf_token %} 
+    Confirm Pickup: 
+</form>
+
+
+{% endblock %}  
