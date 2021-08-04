@@ -11,4 +11,9 @@
     Weekly Pickup Day:<input type="datetime" name="weekly_pickup_day" id="weekly_pickup_day"><br>
     <input type="submit" value="Update!">
 </form>
+<form action ="{% url 'customers:pickupday' %}" method="post">
+    {% csrf_token %}
+    One Time Pickup Date: <input type="datetime" name="one_time_pickup" id="one_time_pickup"><br>
+    <input type="submit" value="Set date">
+</form>
 {% endblock %}

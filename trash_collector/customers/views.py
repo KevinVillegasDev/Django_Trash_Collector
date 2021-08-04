@@ -37,7 +37,7 @@ def create(request):
         balance = request.POST.get('balance')
         # suspend_start = request.POST.get('suspend_start')
         # suspend_end = request.POST.get('suspend_end')
-        new_customer = Customer(name = name, address = address, zipcode = zipcode, weekly_pickup_day = weekly_pickup_day, 
+        new_customer = Customer(name = name, address = address, zipcode = zipcode, weekly_pickup_day = weekly_pickup_day,
                                 balance = balance, user = user)
         new_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
@@ -59,3 +59,15 @@ def pickupday(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
          return render(request, 'customers/pickupday.html', context)
+     
+def onetimepickup(request):
+    user = request.user
+    context = {"user": user}
+    if request.method == "POST":
+        one_time_pickup = Customer.objects.get(user=user)
+        one_time_pickup.one_time_pickup = request.POST.get('one_time_pickup')
+        one_time_pickup.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+         return render(request, 'customers/pickupday.html', context)
+    
