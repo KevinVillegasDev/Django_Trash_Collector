@@ -7,13 +7,15 @@
     Hello Employee {{ user.username }}!<br>
       <div class="cards col-sm-12 bg-info">
         Employee Info goes here
-        {{customers}}
-        {{display_zipcode}}
       </div>
       {% csrf_token %}
-      Name: {{customer.zipcode}}<br>
+
+      {% for customer in customers %}
+      Name: {{customer.name}}<br>
+      zipcode: {{customer.zipcode}}<br>
+      {% endfor %}
        
-    </form>
+    
 
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>

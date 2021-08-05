@@ -15,14 +15,11 @@ def index(request):
     # This line will get the Customer model from the other app, it can now be used to query the db for Customers
     Customer = apps.get_model('customers.Customer')
     user = request.user
+    employee_from_db = Employee.objects.get(user=user)
+    zipcode = Customer.objects.filter(zipcode=employee_from_db.zipcode)
+    print(zipcode)
+    return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': zipcode})
     
-    display_zip = Customer.objects.filter(user=user)
-    print(display_zip)
-    return render(request, 'employees/index.html')
-    # if request.method == "GET":
-    # else:    
-    #     return render(request, 'employees/index.html')
-
 
 
 def create(request):
@@ -37,7 +34,3 @@ def create(request):
         return render(request, 'employees/create.html')
         
 
-def confirmpickup(request):
-    user = request.user
-    if request.method == "POST":
-        confirmed = request.POST.get("cofirmed")
