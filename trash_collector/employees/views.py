@@ -21,7 +21,7 @@ def index(request):
     zipcode = Customer.objects.filter(zipcode=employee_from_db.zipcode)
     weekly_pickup_day = Customer.objects.filter(weekly_pickup_day=todays_date)
 
-    return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': zipcode})
+    return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': zipcode, 'customers': weekly_pickup_day})
     
 
 
