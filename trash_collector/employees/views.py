@@ -16,12 +16,12 @@ def index(request):
     # This line will get the Customer model from the other app, it can now be used to query the db for Customers
     Customer = apps.get_model('customers.Customer')
     user = request.user
-    employee_from_db = Employee.objects.get(user=user)
     todays_date = date.today()
+    employee_from_db = Employee.objects.get(user=user)
     zipcode = Customer.objects.filter(zipcode=employee_from_db.zipcode)
-    pickup = Customer.objects.filter(pickup=todays_date)
+    weekly_pickup_day = Customer.objects.filter(weekly_pickup_day=todays_date)
 
-    return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': zipcode, 'customers': pickup})
+    return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': zipcode})
     
 
 
