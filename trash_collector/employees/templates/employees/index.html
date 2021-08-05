@@ -26,13 +26,14 @@
           <th>Zip Code</th>
           <th> weekly pick up day</th>
         </tr>
+        {% for customer in customers %}
         <tr>
-          {% for customer in customers %}
           <td> {{customer.name}} </td>
           <td> {{customer.zipcode}} </td>
           <td>{{customer.weekly_pickup_day}}</td>
-          {% endfor %}
-        </tr>
+        </tr> 
+        {% endfor %}
+         
         
       </table>
       <!-- {% for customer in customers %}

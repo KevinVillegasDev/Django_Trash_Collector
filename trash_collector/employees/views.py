@@ -18,11 +18,10 @@ def index(request):
     user = request.user
     todays_date = date.today()
     employee_from_db = Employee.objects.get(user=user)
-    zipcode = Customer.objects.filter(zipcode=employee_from_db.zipcode)
-    weekly_pickup_day = Customer.objects.filter(weekly_pickup_day=calendar.day_name[todays_date.weekday()])
+    customerSortResults= Customer.objects.filter(zipcode=employee_from_db.zipcode).filter(weekly_pickup_day=calendar.day_name[todays_date.weekday()])
     #testing to make sure kevin is getting my changes 
 
-    return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': zipcode, 'customers': weekly_pickup_day})
+    return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': customerSortResults })
     
 
 
