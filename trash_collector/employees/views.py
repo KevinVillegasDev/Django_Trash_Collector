@@ -1,3 +1,4 @@
+import datetime
 from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse
 from .models import Employee
@@ -5,6 +6,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.apps import apps
 from datetime import date
+from datetime import timedelta
+from django.db.models import Q
 import calendar
 
 # Create your views here.
@@ -22,8 +25,15 @@ def index(request):
     except:
         return HttpResponseRedirect(reverse('employees:create'))
     todays_date = date.today()
+
     employee_from_db = Employee.objects.get(user=user)
-    customerSortResults= Customer.objects.filter(zipcode=employee_from_db.zipcode).exclude(suspend_start = todays_date) | Customer.objects.filter(one_time_pickup=todays_date).filter(zipcode=employee_from_db.zipcode)
+    zip_pickup = Customer.objects.filter(zipcode=employee_from_db.zipcode)
+    weekly_pickup = Customer.objects.filter(weekly_pickup_day=calendar.day_name[todays_date.weekday()])
+    one_time =  Customer.objects.filter(one_time_pickup=todays_date).filter(zipcode=employee_from_db.zipcode)
+    suspend_start = Customer.objects.filter(~Q(suspend_start=todays_date))
+    
+    
+    customerSortResults= zip_pickup  & (weekly_pickup | one_time) & suspend_start
 
     return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': customerSortResults })
     
