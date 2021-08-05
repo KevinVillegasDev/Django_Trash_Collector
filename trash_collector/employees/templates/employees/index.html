@@ -25,12 +25,14 @@
           <th> Customer </th>
           <th>Zip Code</th>
           <th> weekly pick up day</th>
+          <th> One Time pickup </th>
         </tr>
         {% for customer in customers %}
         <tr>
           <td> {{customer.name}} </td>
           <td> {{customer.zipcode}} </td>
           <td>{{customer.weekly_pickup_day}}</td>
+          <td>{{customer.one_time_pickup}}</td>
         </tr> 
         {% endfor %}
          
