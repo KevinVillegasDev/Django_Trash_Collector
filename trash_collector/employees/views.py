@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.apps import apps
 from datetime import date
-
+import calendar
 
 # Create your views here.
 
@@ -19,7 +19,7 @@ def index(request):
     todays_date = date.today()
     employee_from_db = Employee.objects.get(user=user)
     zipcode = Customer.objects.filter(zipcode=employee_from_db.zipcode)
-    weekly_pickup_day = Customer.objects.filter(weekly_pickup_day=todays_date)
+    weekly_pickup_day = Customer.objects.filter(weekly_pickup_day=calendar.day_name[todays_date.weekday()])
 
     return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': zipcode, 'customers': weekly_pickup_day})
     
