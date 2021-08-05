@@ -4,17 +4,42 @@
 
 {% block content %}
   {% if user.is_authenticated %}
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    </style>
     Hello Employee {{ user.username }}!<br>
       <div class="cards col-sm-12 bg-info">
         Employee Info goes here
       </div>
       {% csrf_token %}
-
-      {% for customer in customers %}
+      <table style="width:100%">
+        <caption>Customers in your area</caption>
+        <tr>
+          <th> Customer </th>
+          <th>Zip Code</th>
+          <th> weekly pick up day</th>
+        </tr>
+        <tr>
+          {% for customer in customers %}
+          <td> {{customer.name}} </td>
+          <td> {{customer.zipcode}} </td>
+          <td>{{customer.weekly_pickup_day}}</td>
+          {% endfor %}
+        </tr>
+        
+      </table>
+      <!-- {% for customer in customers %}
       Name: {{customer.name}}<br>
       zipcode: {{customer.zipcode}}<br>
       pick up day: {{customer.weekly_pickup_day}}<br>
-      {% endfor %}
+      {% endfor %} -->
        
     
 
