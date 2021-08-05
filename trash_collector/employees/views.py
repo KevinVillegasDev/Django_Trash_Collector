@@ -4,6 +4,7 @@ from .models import Employee
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.apps import apps
+from datetime import date
 
 
 # Create your views here.
@@ -16,9 +17,11 @@ def index(request):
     Customer = apps.get_model('customers.Customer')
     user = request.user
     employee_from_db = Employee.objects.get(user=user)
+    todays_date = date.today()
     zipcode = Customer.objects.filter(zipcode=employee_from_db.zipcode)
-    print(zipcode)
-    return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': zipcode})
+    pickup = Customer.objects.filter(pickup=todays_date)
+
+    return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': zipcode, 'customers': pickup})
     
 
 
