@@ -4,7 +4,17 @@
 
 {% block content %}
   {% if user.is_authenticated %}
-    Hello Employee {{ user.username }}!
+    Hello Employee {{ user.username }}!<br>
+      <div class="cards col-sm-12 bg-info">
+        Employee Info goes here
+        {{customers}}
+        {{display_zipcode}}
+      </div>
+      {% csrf_token %}
+      Name: {{customer.zipcode}}<br>
+       
+    </form>
+
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
