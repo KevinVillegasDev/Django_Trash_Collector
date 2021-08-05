@@ -23,7 +23,7 @@ def index(request):
         return HttpResponseRedirect(reverse('employees:create'))
     todays_date = date.today()
     employee_from_db = Employee.objects.get(user=user)
-    customerSortResults= Customer.objects.filter(zipcode=employee_from_db.zipcode).filter(weekly_pickup_day=calendar.day_name[todays_date.weekday()]) | Customer.objects.filter(one_time_pickup=todays_date).filter(zipcode=employee_from_db.zipcode)
+    customerSortResults= Customer.objects.filter(zipcode=employee_from_db.zipcode).exclude(suspend_start = todays_date) | Customer.objects.filter(one_time_pickup=todays_date).filter(zipcode=employee_from_db.zipcode)
 
     return render(request, 'employees/index.html', {'employee': employee_from_db, 'customers': customerSortResults })
     
