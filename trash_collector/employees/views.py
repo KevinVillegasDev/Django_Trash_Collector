@@ -55,6 +55,10 @@ def filter(request):
     user = request.user
     if request.method == "POST":
         user=user
+        Customer = apps.get_model('customers.Customer')
+        selected_date = date.today()
+        weekly_pickup = Customer.objects.filter(weekly_pickup_day=calendar.day_name[todays_date.weekday()])
+        
         return HttpResponseRedirect(reverse('employees:index'))
     else:
         return render(request, 'employees/filter.html')
