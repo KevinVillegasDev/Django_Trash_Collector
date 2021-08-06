@@ -20,6 +20,12 @@
     </div>
     {% elif group.name == "Employees" %}
     <p>Employee Navbar</p>
+    <div class="nav-wrapper">
+      <div class="nav-link-wrapper">
+        <a href="{% url 'employees:index' %}">Home</a>
+        <a href="{% url 'employees:filter' %}">Filter Customers</a>
+      </div>
+    </div>
     {% endif %}
   {% endfor %}
   <p><a href="{% url 'logout' %}">Log Out</a></p>

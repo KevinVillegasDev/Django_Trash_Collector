@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
+{% block title %}{% block header %} Filter Customers by Pickup {% endblock %}{% endblock %}
 
 {% block content %}
+<form action="{% url 'employees:filter' %}" method="post">
 
+</form>
 
 
 

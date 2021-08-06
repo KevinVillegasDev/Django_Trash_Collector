@@ -51,3 +51,10 @@ def create(request):
         return render(request, 'employees/create.html')
         
 
+def filter(request):
+    user = request.user
+    if request.method == "POST":
+        user=user
+        return HttpResponseRedirect(reverse('employees:index'))
+    else:
+        return render(request, 'employees/filter.html')
